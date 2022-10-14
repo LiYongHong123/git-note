@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>git学习笔记</title>
+</head>
+
+<body>
+    <h1>Git和github的学习笔记</h1>
+    <!-- git init初始化一个仓库 -->
+    <!-- git add . 把所有文件放到暂存区 -->
+    <!-- git add 文件名 把指定文件放到暂存区 -->
+    <!-- git commit -m 把暂存区的文件放到远程仓库-->
+    <!-- git status 查看当前项目有哪些改动的 -->
+    <!-- git log 查看之前 的提交记录 -->
+    <!-- git log --author "某个人" 查看某个人的提交代码，查看单个人的代码提交记录 -->
+    <!-- git remote add origin https://github.com/LiYongHong123/First-Demo.git -->
+    <!-- git push -u origin master -->
+
+    <!-- git方式-删除文件的两种方式 -->
+    <!-- 1,手动删除文件，先右击文件名删除问价，再在控制台git status查询后再git add . 把所有文件上传倒本地仓库 再git push上传到远端 -->
+    <!-- 2,-推荐-命令行删除文件，命令行输入git rm 文件名 再 git status查询到 再git add . 再 git push -->
+    <!-- 注意:每次删除文件后记得用git add . 把所有文件上传倒本地仓库 -->
+
+    <!-- git方式-修改文件名的两种方式 -->
+    <!-- 1，手动修改文件名，先在文件上修改文件名，然后命令行查看git status 先添加新的文件名，再删除旧的文件名 再查看git status绿色后再上传git commit -m -->
+    <!-- 2，-推荐- 命令行修改文件名 命令行输入 git mv 旧文件名 新文件名 然后查看git status 绿色后上传 git commit -m -->
+
+    <!-- git移动文件到指定文件夹 -->
+    <!-- 1，使用修改文件名的命令实现 git mv 文件名 文件夹 再查询git status绿色再上传 git commit -m -->
+    <!-- 2,git mv 文件名 文件夹/文件名 把文件移动倒指定文件夹并修改文件名 再查询git status 绿色后再上传 git commit -m -->
+
+    <!-- git查看文件的前后变化 -->
+    <!-- 1，git log --pretty=oneline 文件夹/文件名 拿到返回的commit 再 git show commit -->
+    <!-- 2，-推荐-git log -p 文件夹/文件名 显示文件的修改信息 -->
+
+    <!-- git返回上次提交的状态，用于代码误操作撤销 -->
+    <!-- 1，git diff 再当前文件下输入命令，返回操作的对比，红色是之前的文件信息，绿色是修改后的现在的文件信息 -->
+    <!-- 2，-推荐-git checkout -- 文件夹/文件名 返回上一次提交的状态 -->
+
+    <!-- git撤销追加倒暂存区 -->
+    <!-- 1，git reset HEAD 文件夹/文件名 先git reset HEAD 文件 撤销暂存，在撤销到上次提交的状态 -->
+
+    <!-- git版本回退 -->
+    <!-- 1，git reset --hard HEAD^ 注意，一个箭头是回退一个版本 -->
+    <!-- 2，git reset --hard commit 返回指定版本先拿到指定版本的commit 用git log -->
+
+    <!-- git将指定文件回退倒指定版本 -->
+    <!-- git checkout commit -- 文件名 需要先拿到指定版本的commit 使用git log -->
+
+    <!-- git将本地代码推送倒远程分支上 -->
+    <!-- git push origin master 推送倒远程的github的master分支上 -->
+
+    <!-- git 创建标签并对标签进行操作 -->
+    <!-- git tag 标签名 创建一个标签，默认标签添加在最后一次的commit里 -->
+    <!-- git tag 查看所有标签 -->
+    <!-- git tag 标签名 commit 给指定commit添加标签，首先要获取commit使用git log -->
+    <!-- git tag -d 标签名 删除指定标签 -->
+    <!-- git push origin tag 标签名 把指定标签推送到github -->
+
+    <!-- git 切换和删除分支 -->
+    <!-- git branch 分支名 创建一个分支 -->
+    <!-- git branch 检查分支 带有*号的分支是当前分支，分支按照字符顺序进行排序 -->
+    <!-- git checkout 分支名 切换到其他分支 -->
+    <!-- git branch -d 分支名 删除指定分支 注意:不能删除当前所在的分支，不能删除有commit操作的分支 -->
+    <!-- git checkout -b 分支名 创建一个分支并直接切换到新创建的分支 -->
+    <!-- git checkout -b 分支名 远程分支名 创建一个分支并直接切换到新创建的分支并且和远端的分支相关联 -->
+    <!-- git branch -D 分支名 强制删除某一个分支，可以删除有commit操作的分支 -->
+
+    <!-- git 合并分支 把分支合并到主分支上首先要切换到主分支上-->
+    <!-- git checkout master 切换到主分支 -->
+    <!-- git merge 要合并的分支名 把分支合并到主分支上 合并后分支上的代码不受影响 -->
+
+    <!-- git合并分支冲突和解决，这个问题发生在没有协商好代码的时候 -->
+    <!-- 合并分支冲突一般发生在不同分支同时修改了同一个文件并上传的时候，这个时候git不知道那个代码是最终代码 -->
+
+
+    <!-- 解决方法 -->
+    <!-- 1，git merge --abort 忽略其他分支，保留master分支的代码 -->
+    <!-- 2，手动删除特殊字符，和小伙伴沟通好以后保留需要的代码，然后git add .一下，把修改后的代码上传 -->
+    <!-- 然后vim输入git commit 在vim里提交暂存信息，输入i开始输入，输入完备注后esc再输入:wq以保存退出 -->
+    <!-- 如果vim里报E45bug是因为文件只读，强制修改，前面步骤一样，最后esc然后输入:wq!强制保存退出 -->
+    <!-- 然后在弹出的界面esc 然后输入:wq推出u当前界面，然后git add .上传代码 -->
+
+    <!-- git 查看版本路线 -->
+    <!-- git log 查看所有记录 -->
+    <!-- git log --oneline以简写方式查看记录 -->
+    <!-- git log --oneline --graph 查看版本和分支 -->
+
+    <!-- git 多人删除分支操作 -->
+    <!-- git fetch 拉取远程仓库的内容 -->
+    <!-- git branch -av 查看改动信息 -->
+    <!-- git push origin --delete 分支名字 删除指定分支，多人使用可以用于删除其他的分支 -->
+    <!-- 注意删除分支一定要确保分支已经不需要了而且分支内容已经合并到主分支上 -->
+
+    <!-- git 把远程的github项目拉取都本地 -->
+    <!-- git clone 路径 文件名  把远程的项目拉取倒此路径下的文件名下 -->
+
+    <!-- git 通一个项目配置另一个程序员账户和邮箱 -->
+    <!-- git config --add --local user.name '用户名' -->
+    <!-- git config --add --local user.email '邮箱' -->
+    <!-- git config --local --list 查看配置信息 -->
+    <!-- git checkout -b 分支名 远程分支名 创建一个分支并直接切换到新创建的分支并且和远端的分支相关联 -->
+
+    <!-- git 不同人修改相同的代码 -->
+    <!-- 不同人修改相同文件并且在同一个分支下直接保存上传就可以了 -->
+
+    <!-- git 不同人修改了不同文件代码上传呢 -->
+    <!-- git 不同人修改了不同的代码上传会出现上传失败 -->
+    <!-- 需要git merge origin/text 把文件合并到分之上再上传 git push就可以了-->
+
+    <!-- 孟宪文提示 -->
+    <!-- 关于github链接远程仓库最后一步链接不上 -->
+    <!-- 1，注意复制的最后一行代码复制的main改成master -->
+    <!-- 2，要绑定电脑的公钥，用DOS的ssh-keygen -t rsa -C ''xxx''命令 -->
+    <!-- 绑定github公钥可以取csdn看。 -->
+    <!-- git push 把本地的所有文件上传到github远程仓库 -->
+</body>
+
+</html>
